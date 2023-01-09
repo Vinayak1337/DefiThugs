@@ -1,0 +1,37 @@
+{
+  "name": "defi-thugs",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "node dist/server.js",
+    "watch": "webpack --watch",
+    "dev": "nodemon --delay 2000ms dist/server.js --ignore src/ --ignore html/ --ignore node_modules/",
+    "build": "webpack --mode production",
+    "serve": "npm run build && npm start"
+  },
+  "author": "https://github.com/vinayak1337",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "chalk": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-rate-limit": "^6.5.2",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "md5": "^2.3.0",
+    "mongodb": "^4.9.0",
+    "mongoose": "^6.5.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "express-list-routes": "^1.1.3",
+    "file-loader": "^6.2.0",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
