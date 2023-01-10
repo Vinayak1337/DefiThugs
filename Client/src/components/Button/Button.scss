@@ -1,0 +1,37 @@
+.button {
+	min-width: 100px;
+	width: auto;
+	height: 50px;
+	letter-spacing: 0.5px;
+	line-height: 50px;
+	padding: 0 35px 0 35px;
+	font-size: 15px;
+	background-color: var(--orange);
+	color: var(--white);
+	text-transform: uppercase;
+	font-family: 'Open Sans Condensed';
+	font-weight: bolder;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 1s;
+
+	&:hover {
+		background-color: var(--white);
+		color: var(--black);
+		border: 1px solid var(--black);
+		transition: 1s;
+	}
+}
+
+.disabled {
+	border: 1px solid var(--black);
+	background-color: var(--white);
+	color: gray;
+	cursor: default;
+
+	&:hover {
+		background-color: var(--white);
+		color: gray;
+	}
+}

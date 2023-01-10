@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './tailwind.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
+import Store, { persistedStore } from 'redux/store';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
@@ -10,7 +14,13 @@ const root = ReactDOM.createRoot(
 
 root.render(
 	<React.StrictMode>
-		<App />
+		<Provider store={Store}>
+			<PersistGate persistor={persistedStore}>
+				<BrowserRouter>
+					<App />
+				</BrowserRouter>
+			</PersistGate>
+		</Provider>
 	</React.StrictMode>
 );
 
