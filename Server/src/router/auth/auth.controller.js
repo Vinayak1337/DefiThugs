@@ -14,18 +14,20 @@ export const sendEmailConfirmation = async (req, res) => {
 	try {
 		const { email, walletAddress } = req.body;
 
-		// hide half of the wallet address
+		const user = await Auth.findOne({
+			email
+		});
+
 		const wallet = walletAddress.slice(0, 6) + '...' + walletAddress.slice(-4);
 
-		const otp = generateOtp();
+		const otp = user?.otp || generateOtp();
 
 		sendOtpToEmail(email, otp, wallet);
 
-		await Auth.create({ email, otp });
+		if (!user) await Auth.create({ email, otp });
 
 		res.status(200).json({ message: 'OTP sent to email' });
 	} catch (error) {
-		console.log(error);
 		handleServerError(error, res);
 	}
 };
@@ -58,7 +60,6 @@ export const confirmEmail = async (req, res) => {
 
 		res.status(200).json({ message: 'Email verified' });
 	} catch (error) {
-		console.log(error);
 		handleServerError(error, res);
 	}
 };
@@ -89,7 +90,6 @@ export const RegisterController = async (req, res) => {
 
 		res.status(200).json({ message: 'User created', token });
 	} catch (error) {
-		console.log(error);
 		handleServerError(error, res);
 	}
 };
@@ -117,7 +117,6 @@ export const LoginController = async (req, res) => {
 
 		res.status(200).json({ message: 'User logged in', token });
 	} catch (error) {
-		console.log(error);
 		handleServerError(error, res);
 	}
 };

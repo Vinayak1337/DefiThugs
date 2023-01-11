@@ -1,5 +1,7 @@
 import SgMail from '@sendgrid/mail';
 import config from './config';
+import chalk from 'chalk';
+const { green } = chalk;
 
 export const generateOtp = () => Math.floor(100000 + Math.random() * 900000);
 
@@ -18,7 +20,9 @@ export const sendOtpToEmail = async (email, otp, name) => {
 			<p>Regards, Defi-thugs</p>
 			`
 		};
+
 		await SgMail.send(msg);
+		console.log(green(`OTP sent to ${email}`));
 
 		// const params = {
 		// 	Destination: {
@@ -50,6 +54,7 @@ export const sendOtpToEmail = async (email, otp, name) => {
 
 		// await new AWS.SES({ apiVersion: '2010-12-01' }).sendEmail(params).promise();
 	} catch (error) {
+		console.log(error, 'error');
 		throw error;
 	}
 };
