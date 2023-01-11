@@ -1,8 +1,10 @@
+import { AuthActions } from 'redux/auth/auth.actions';
+
 export enum GLOBAL_CONSTANTS {
 	LOGOUT_USER = '@global/LOGOUT_USER'
 }
 
-type GlobalAction = Action<GLOBAL_CONSTANTS>;
+type GlobalAction = Action<GLOBAL_CONSTANTS> | AuthActions;
 
 type rootActions = GlobalAction;
 

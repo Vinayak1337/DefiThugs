@@ -4,8 +4,9 @@ import UserRouter from './user/user.router';
 
 const routesMap = {
 	user: UserRouter,
-	transaction: TransactionRouter,
-	auth: AuthRouter
+	transaction: TransactionRouter
 };
+
+export { AuthRouter };
 
 export default routesMap;

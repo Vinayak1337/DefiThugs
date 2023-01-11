@@ -7,14 +7,16 @@ const FormInput: FC<FormInputProps> = ({
 	label,
 	hasError = false,
 	errorMsg,
+	disabled = false,
 	...inputProps
 }) => (
-	<StyledForm className='form'>
+	<StyledForm className={disabled ? 'cursor-not-allowed' : ''}>
 		<div className={`form-input ${hasError && 'form-error'}`}>
-			<input {...inputProps} onChange={handleChange} />
+			<input className={disabled ? 'cursor-not-allowed' : ''} disabled={disabled} {...inputProps} onChange={handleChange} />
 			<span></span>
 			{label ? (
 				<label
+					hidden={disabled}
 					className={`${
 						inputProps.value.length ? 'shrink' : ''
 					} form-input-label font-semibold`}
@@ -125,4 +127,5 @@ interface FormInputProps {
 	hasError?: boolean;
 	errorMsg?: string;
 	handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+	disabled?: boolean;
 }

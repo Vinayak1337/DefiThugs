@@ -1,16 +1,21 @@
 interface State {
-	userReducer: UserReducer;
-	authReducer: AuthReducer;
-	appReducer: AppReducer;
+	userReducer: UserState;
+	authReducer: AuthState;
+	appReducer: AppState;
 }
 
-interface UserReducer {
+interface UserState {
 	user: User;
 }
 
-interface AuthReducer {}
+interface AuthState {
+	email: string;
+	emailConfirmationSent: boolean;
+	isEmailVerified: boolean;
+	token: string;
+}
 
-interface AppReducer {}
+interface AppState {}
 
 interface User {}
 

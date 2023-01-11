@@ -3,22 +3,28 @@
 import express from 'express';
 import expressListRoutes from 'express-list-routes';
 import chalk from 'chalk';
-import { config } from 'dotenv';
 import connectDB from './utils/db-connect';
 import initRoutes from './utils/routes';
 import initMiddlewares from './utils/middlewares';
+import aws from 'aws-sdk';
+import config from './utils/config';
 
 const { green, red } = chalk;
-config();
 
 const app = express();
-const PORT = process.env.PORT || 8080;
-const ENV = process.env.NODE_ENV || 'development';
+const PORT = config.PORT || 8080;
+const ENV = config.ENV;
 
-app.baseUrl = process.env.BASE_URL;
+aws.config.update({
+	accessKeyId: config.AWS_ACCESS_KEY,
+	secretAccessKey: config.AWS_SECRET_KEY,
+	region: config.AWS_REGION
+});
+
+app.baseUrl = config.BASE_URL;
 
 app.get('/', (_, res) => {
-	res.json({ message: 'Chaintusker server!' });
+	res.json({ message: 'Defi thugs server!' });
 });
 
 initMiddlewares(app);

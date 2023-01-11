@@ -9,7 +9,7 @@ const Auth: FC = () => {
 
 	return (
 		<div className='w-full h-full flex-center'>
-			<div className='border-2 transition-all border-primary shadow-primary rounded-xl py-7 p-1 flex-center flex-col'>
+			<div className='border-2 transition-all min-w-[283px] border-primary shadow-primary rounded-xl py-7 p-1 flex-center flex-col'>
 				<div className='w-56 h-12 mb-4 rounded-3xl flex-center relative shadow-secondary'>
 					<div
 						className={`w-1/2 h-full rounded-3xl z-10 duration-500 transition-all bg-primary absolute top-0 ${

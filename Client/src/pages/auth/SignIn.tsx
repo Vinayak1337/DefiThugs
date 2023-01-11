@@ -1,14 +1,16 @@
 import { ChangeEvent, useState, FormEvent } from 'react';
 import { Button, FormInput } from 'components';
+import { useDispatch } from 'react-redux';
+import { loginUser } from 'redux/auth/auth.actions';
 
 const SignIn = () => {
 	const [state, setState] = useState({
-		email: '',
-		password: '',
-		isUserValid: true
-	});
+			email: '',
+			password: ''
+		}),
+		dispatch = useDispatch();
 
-	const { email, password, isUserValid } = state;
+	const { email, password } = state;
 
 	const changeState = (newState: Partial<typeof state>) =>
 			setState(prevState => ({ ...prevState, ...newState })),
@@ -18,11 +20,11 @@ const SignIn = () => {
 
 	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
+		dispatch(loginUser({ email, password }));
 	};
 
 	return (
 		<form className='flex flex-col items-center' onSubmit={handleSubmit}>
-			{!isUserValid && <p>Either email or password is incorrect</p>}
 			<FormInput
 				type='email'
 				name='email'

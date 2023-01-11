@@ -4,7 +4,7 @@ import rateLimit from 'express-rate-limit';
 import cors from 'cors';
 import morgan from 'morgan';
 import express from 'express';
-import authenticator from './authenticator';
+import { AuthRouter } from '../router';
 
 /**
  * @param {import('express').Application} app
@@ -15,7 +15,7 @@ const initMiddlewares = app => {
 	app.use(morgan('dev'));
 	app.use(cors());
 	app.use(limiter);
-	app.use(authenticator);
+	app.use('/auth', AuthRouter);
 };
 
 const limiter = rateLimit({

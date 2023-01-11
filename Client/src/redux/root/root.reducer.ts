@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import storage from 'redux-persist/lib/storage';
 import storageSession from 'redux-persist/lib/storage/session';
 import { persistReducer } from 'redux-persist';
+import authReducer from 'redux/auth/auth.reducer';
 
 const rootPersistConfig = {
 	key: 'defi-thugs-' + process.env.NODE_ENV,
@@ -19,7 +20,9 @@ const appPersistConfig = {
 	storage: storageSession
 };
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+	authReducer: persistReducer(authPersistConfig, authReducer)
+});
 
 export const persistedReducer = persistReducer(rootPersistConfig, rootReducer);
 
