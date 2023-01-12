@@ -15,10 +15,10 @@ const authPersistConfig = {
 	storage: storageSession
 };
 
-const appPersistConfig = {
-	key: 'defi-thugs-app-' + process.env.NODE_ENV,
-	storage: storageSession
-};
+// const appPersistConfig = {
+// 	key: 'defi-thugs-app-' + process.env.NODE_ENV,
+// 	storage: storageSession
+// };
 
 const rootReducer = combineReducers({
 	authReducer: persistReducer(authPersistConfig, authReducer)
